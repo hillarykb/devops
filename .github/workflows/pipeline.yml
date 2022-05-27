@@ -29,6 +29,7 @@ jobs:
           python -m unittest -v test
           coverage run -m unittest
           coverage report -m
+          coverage xml -i
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
