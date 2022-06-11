@@ -11,15 +11,16 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
+
       - name: Login to Heroku Container registry
         env: 
-            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          run: heroku container:login
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login
 
       - name: Docker Image & Push Heroku Registry
         env:
-            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
 
       - name: Checkout Repo
         uses: actions/checkout@v2
